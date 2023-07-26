@@ -17,12 +17,16 @@
 # docker run -i --rm -p 8080:8080 quarkus/code-with-quarkus
 #
 ###
-FROM quay.io/quarkus/quarkus-micro-image:2.0
+FROM registry.redhat.io/quarkus/mandrel-22-rhel8
+
+RUN ./mvnw clean package -Pnative -Dquarkus.native.container-build=true
+
 WORKDIR /work/
+
 RUN chown 1001 /work \
     && chmod "g+rwX" /work \
     && chown 1001:root /work
-COPY --chown=1001:root target/*-runner /work/application
+COPY --chown=1001:root target/quarkus-app/*-runner /work/application
 
 EXPOSE 8080
 USER 1001
