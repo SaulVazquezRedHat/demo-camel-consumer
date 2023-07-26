@@ -19,6 +19,7 @@
 ###
 FROM registry.redhat.io/quarkus/mandrel-22-rhel8
 
+RUN pwd
 RUN ./mvnw clean package -Pnative -Dquarkus.native.container-build=true
 
 WORKDIR /work/
