@@ -19,8 +19,8 @@
 ###
 FROM registry.redhat.io/quarkus/mandrel-22-rhel8
 
-RUN sudo yum module enable -y container-tools:rhel8
-RUN sudo yum module install -y container-tools:rhel8
+RUN yum module enable -y container-tools:rhel8
+RUN yum module install -y container-tools:rhel8
 
 RUN pwd
 COPY ./ .
