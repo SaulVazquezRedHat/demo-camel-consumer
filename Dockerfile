@@ -1,5 +1,5 @@
 ## Stage 1 : build with maven builder image with native capabilities
-FROM registry.redhat.io/quarkus/mandrel-22-rhel8 AS build
+FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 AS build
 COPY --chown=quarkus:quarkus mvnw /code/mvnw
 COPY --chown=quarkus:quarkus .mvn /code/.mvn
 COPY --chown=quarkus:quarkus pom.xml /code/
