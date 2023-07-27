@@ -5,7 +5,7 @@ COPY --chown=185 .mvn /code/.mvn
 COPY --chown=185 pom.xml /code/
 USER 185
 WORKDIR /code
-RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.1:go-offline
+#RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.1:go-offline
 COPY src /code/src
 RUN ./mvnw clean package
 
