@@ -23,9 +23,11 @@ USER root
 RUN yum module enable -y container-tools:rhel8
 RUN yum module install -y container-tools:rhel8
 
+USER 1001
+
 RUN pwd
 COPY ./ .
-RUN ./mvnw clean package -Pnative -Dquarkus.native.container-build=true
+RUN ./mvnw clean package -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.container-runtime=podman
 RUN ls
 
 WORKDIR /work/
