@@ -19,7 +19,9 @@
 ###
 FROM registry.redhat.io/quarkus/mandrel-22-rhel8
 
-RUN dnf -y install podman
+RUN sudo yum module enable -y container-tools:rhel8
+RUN sudo yum module install -y container-tools:rhel8
+
 RUN pwd
 COPY ./ .
 RUN ./mvnw clean package -Pnative -Dquarkus.native.container-build=true
